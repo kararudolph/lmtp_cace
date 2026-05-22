@@ -47,7 +47,7 @@ estimate_density_ratios <- function(task, fold, learners, mtp, control, pb) {
     if (time == 1) {
       glm_vars <- c()
 
-      formula_str <- paste("..i..lmtp_stack_indicator ~", paste(glm_vars, collapse = " + "))
+      formula_str <- "..i..lmtp_stack_indicator ~ 1"
       fit <- glm(as.formula(formula_str),
                  data = stacked[i, ],
                  family = binomial())
