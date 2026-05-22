@@ -45,21 +45,7 @@ estimate_density_ratios <- function(task, fold, learners, mtp, control, pb) {
 
     # use parametric GLM
     if (time == 1) {
-      glm_vars <- c("STRATA",
-                    "site_2014",
-                    "site_2017",
-                    "site_2024",
-                    "site_2052",
-                    "site_2060",
-                    "site_2076",
-                    "site_2078",
-                    "STRATA:site_2014",
-                    "STRATA:site_2017",
-                    "STRATA:site_2024",
-                    "STRATA:site_2052",
-                    "STRATA:site_2060",
-                    "STRATA:site_2076",
-                    "STRATA:site_2078")
+      glm_vars <- c()
 
       formula_str <- paste("..i..lmtp_stack_indicator ~", paste(glm_vars, collapse = " + "))
       fit <- glm(as.formula(formula_str),
