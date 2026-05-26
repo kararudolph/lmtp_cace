@@ -50,7 +50,11 @@ shift_trt_list <- function(data, trt, .f) {
   for (a in trt) {
     new <- .f(data, a)
     for (col in a) {
-      out[[col]] <- new[[col]]
+      if (is.atomic(new) && !is.list(new)) {
+        out[[col]] <- new
+      } else {
+        out[[col]] <- new[[col]]
+      }
     }
   }
   as.data.frame(out, check.names = FALSE)

@@ -43,15 +43,14 @@ estimate_density_ratios <- function(task, fold, learners, mtp, control, pb) {
     vars <- na.omit(vars)
     stacked <- stack_data(natural$train, shifted$train, task$vars$A, task$vars$C, time)
 
-    # use parametric GLM
+    # previously used parametric GLM
+    # now use intercept only model for randomization
     if (time == 1) {
-      glm_vars <- c("sex")
-      
-      formula_str <- paste("..i..lmtp_stack_indicator ~", paste(glm_vars, collapse = " + "))
-      #fit <- glm(as.formula(formula_str)
-                 
-      #formula_str <- "..i..lmtp_stack_indicator ~ 1"
-      fit <- glm(as.formula(formula_str),
+      #glm_vars <- c("sex")
+      #formula_str <- paste("..i..lmtp_stack_indicator ~", paste(glm_vars, collapse = " + "))
+                   
+      #fit <- glm(as.formula(formula_str),
+      fit <- glm(..i..lmtp_stack_indicator ~ 1,
                  data = stacked[i, ],
                  family = binomial())
     } else {
